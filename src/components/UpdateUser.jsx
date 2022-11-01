@@ -10,6 +10,16 @@ const UpdateUser = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        fetch(`http://localhost:5000/users/${upUser._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(users)
+        })
+        .then(res=> res.json())
+        .then(data=> console.log(data))
+
     }
 
     const handleOnBlur = (event) => {
@@ -18,6 +28,8 @@ const UpdateUser = () => {
         const newUser = {...users};
         newUser[field] = value;
         setUsers(newUser)
+
+        
     }
 
 
