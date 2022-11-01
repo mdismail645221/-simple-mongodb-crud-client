@@ -2,6 +2,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css';
 import AddUser from './components/AddUser';
 import Home from './components/Home';
+import UpdateUser from './components/UpdateUser';
 
 
 function App() {
@@ -15,6 +16,11 @@ function App() {
     {
       path: '/user/add',
       element: <AddUser></AddUser>
+    },
+    {
+      path: '/updateUser/:id',
+      element: <UpdateUser></UpdateUser>,
+      loader: ({params})=> fetch(`http://localhost:5000/users/${params.id}`)
     }
   ])
 
